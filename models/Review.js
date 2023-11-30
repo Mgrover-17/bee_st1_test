@@ -1,0 +1,29 @@
+const mongoose = require('mongoose')
+
+const reviewSchema = new mongoose.Schema({
+   content:{
+    type: String,
+    required: true,
+    maxLength: 500,
+   },
+   rating:{
+    type: Number,
+    required: true,
+    max:5,
+    min:1
+   },
+   author:{
+    type: String,
+    required: true,
+   },
+   createdAt:{
+    type: Date,
+    default:Date.now
+    
+   }
+
+});
+
+const Review = mongoose.model('Review', reviewSchema);
+
+module.exports = { reviewSchema, Review };
